@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc} 
+\usepackage{ae,aecompl}
+\usepackage[utf8]{inputenc} %applemac, ou latin1
+\usepackage{amsmath}
+\begin{document}
+
+Sejam $X_1, X_2, \ldots, X_n$ uma sequência de variáveis aleatórias
+independentes e distribuídas de forma igual com $\operatorname{E}[X_i] = \mu$
+e $\operatorname{Var}[X_i] = \sigma^2 < \infty$, e denote
+\begin{equation*}
+S_n = \frac{1}{n}\sum_{i}^{n} X_i
+\end{equation*}
+suas médias. Então quando $n$ tende ao infinito, as variáveis aleatórias  
+$\sqrt{n}(S_n - \mu)$ convergem em distribuição para uma normal $N(0,
+\sigma^2)$.
+
+% bonus points: the N for normal is usually set in a caligraphic
+% font; you can get this using $\mathcal{N}(0, \sigma^2)$.
+
+\end{document}
+

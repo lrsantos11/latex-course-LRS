@@ -1,0 +1,692 @@
+\documentclass{beamer}
+
+\input{preamble.tex}
+\usefonttheme[onlymath]{serif}
+
+\title[Introdução ao \LaTeX]{Uma Introdução  ao \LaTeX\thanks{Adaptado de
+\href{https://docs.google.com/file/d/0B1WX73woAuwgR2hHTE9ybmk1WG8/edit}{``An
+interactive introduction to \LaTeX''} por John Lees-Miller.}}
+\subtitle{Parte I: O básico}
+\author{Luiz Rafael dos Santos}
+\institute{IFC-Camboriú}
+\date{\today}
+
+
+% \subtitle{Part 1: The Basics} 
+
+\begin{document} 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\titlepage
+\end{frame}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Por que utilizar \LaTeX}
+
+\begin{itemize}
+  \item Gera  textos bonitos
+  \begin{itemize}
+  \item Especialmente textos matemáticos
+\end{itemize}
+  \item Foi criado por cientistas, para cientistas
+  \begin{itemize}
+  \item Uma grande comunidade que atualiza e faz novos pacotes
+\end{itemize}
+  \item É bem poderoso --- pode ser estendido
+  \begin{itemize}
+  \item Pacotes para artigos, apresentações, monografias, teses, planilhas, \ldots
+\end{itemize}
+\end{itemize}
+
+
+\begin{block}{Dificuldades}
+\begin{itemize}
+  \item Linguagem de marcação
+  \item Mudança de paradigma em relação a como se escreve um texto
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Como funciona?}
+\begin{itemize}
+  \item Você escreve o documento em \texttt{texto puro} com
+ \cmd{comandos} que descrevem sua estrutura ou 
+  significado
+  \item O programa \texttt{latex} processa seu texto e os comandos para produzir
+  um documento esteticamente bem formatado.
+
+\end{itemize}
+\vskip 2ex
+\begin{center}
+\begin{minted}[frame=single]{latex}
+A chuva na Amazônia \emph{cai} na horizontal.
+\end{minted}
+\vskip 2ex
+\tikz\node[single arrow,fill=gray,font=\ttfamily\bfseries,%
+  rotate=270,xshift=-1em]{latex};
+\vskip 2ex
+\fbox{A chuva na Amazônia \emph{cai} na horizontal.}
+\end{center}
+\end{frame} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Mais exemplos e seus resultados\ldots}
+\begin{exampletwoup}
+\begin{itemize}
+\item Café
+\item Leite
+\item Bolacha
+\end{itemize}
+\end{exampletwoup}
+\vskip 2ex
+\begin{exampletwoup}
+\begin{figure}
+\includegraphics{chick}
+\end{figure}
+\end{exampletwoup}
+\vskip 2ex
+\begin{exampletwoup}
+\begin{equation}
+\alpha + \beta + 1
+\end{equation}
+\end{exampletwoup}
+
+\tiny{Imagem retirada de
+\url{http://www.andy-roberts.net/writing/latex/importing_images}}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Mudança de atitude}
+
+\begin{itemize}
+\item Utilize comandos para descrever `o que é', e não  `como deve parecer'.
+\item Concentre-se no conteúdo.
+\item Deixe que o \LaTeX{} faça seu trabalho.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{O básico}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Começando}
+\begin{frame}[fragile]{\insertsubsection}
+\begin{itemize}
+\item Um documento  \LaTeX{} minimalista em português do Brasil:
+\inputminted[frame=single]{latex}{basics.tex}
+\item Todo comando começa com uma \emph{barra invertida} \keystrokebftt{\bs}.
+\item Todo documento começa com o comando
+\cmdbs{documentclass} .
+\item o \emph{argumento} que fica entre chaves \keystrokebftt{\{}
+\keystrokebftt{\}} diz ao \LaTeX{} que tipo de documento você está criando:
+an \bftt{article}.
+\item O símbolo de porcentagem \keystrokebftt{\%} inicia um  \emph{comentário}
+--- \LaTeX{} irá ignorar tudo que vem após o comentário.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{\insertsubsection{} com \wllogo}
+\begin{itemize}
+\item \wllogo é um  \emph{website} para escrever documentos em 
+\LaTeX.
+\item O \emph{site} `compila' seu \LaTeX{} automaticamente e mostra os
+resultados.
+\vskip 2em
+\begin{center}
+\fbox{\href{\wlnewdoc{basics.tex}}{%
+Clique aqui para abrir um exemplo do documento no \wllogo{}}}
+\\[1ex]\scriptsize{}Ou vá para use este URL:
+\url{http://bit.ly/WU0bMU}\\
+Para melhores resultados,  utilize
+\href{http://www.google.com/chrome}{Google Chrome} ou uma versão recente do 
+\href{http://www.mozilla.org/en-US/firefox/new/}{FireFox}.
+\end{center}
+\vskip 2ex
+\item Conforme sigamos para os próximos \emph{slides}, tente os exemplos,
+digitando-os no documento exemplo do \LaTeX.
+\item \textbf{É verdade, você deve tentar durante o curso!}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Digitando Texto}
+\begin{frame}[fragile]{\insertsubsection{}}
+\small
+\begin{itemize}
+\item Digite seu texto entre os comandos \cmdbegin{document} and
+\cmdend{document}.
+\item Na maior parte do tempo, você pode digitar o texto normalmente.
+\begin{exampletwouptiny}
+Palavras são separadas por um ou mais
+espaços.
+
+Parágrafos são separados por uma
+ou mais linhas em branco.
+\end{exampletwouptiny}
+\item Espaço no código-fonte será colapsado no arquivo-saída.
+\begin{exampletwouptiny}
+A    chuva   na       amazônia
+cai    na Horizontal.
+\end{exampletwouptiny}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{\insertsubsection{}: Advertências}
+\small
+\begin{itemize}
+\item Marcas de citação são um pouco chatas: use uma
+crase \keystroke{\`{}} na esquerda e um apóstrofo 
+\keystroke{\'{}} na direita.
+\begin{exampletwouptiny}
+Aspas simples: `texto'.
+
+Aspas duplas: ``texto''.
+\end{exampletwouptiny}
+
+\item Alguns caracteres comuns tem significado especial no  \LaTeX:\\[1ex]
+\begin{tabular}{cl}
+\keystrokebftt{\%} & porcentagem              \\
+\keystrokebftt{\#} & hashtag (jogo da velha) \\
+\keystrokebftt{\&} & e comercial                 \\
+\keystrokebftt{\$} & cifrão               \\
+\end{tabular}
+\item Se você apenas digitá-los, você terá um erro. Se você quiser que algum
+deles apareça, tera que utilizar uma barra invertida antes do símbolo.
+\begin{exampletwoup}
+\$\%\&\#!
+\end{exampletwoup}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Lidando com Erros}
+\begin{itemize}
+\item \LaTeX{} pode se confundir ao compilar seu documento. Se isso acontecer,
+parará com um erro, o qual deverá ser consertado antes de produzir o documento.
+\item Por exemplo, se você digitar o comando \cmdbs{emph} como \cmdbs{meph},
+\LaTeX{} irá parar com um erro ``\emph{undefined control sequence}'' (sequencia de
+controle indefinida) , já que ``meph'' não é um comando conhecido.
+\end{itemize}
+\begin{block}{Conselho sobre Erros}
+\begin{enumerate}
+\item Não entre em pânico. Erros acontece,.
+\item Concerte-os assim que eles aparecerem -- se o que você digitou causou
+erro, deve debugar a partir daquela linha.
+\item Se houver muitos erros, comece pelo primeiro,  --- a causa de um erro
+pode ser um outro erro anterior.
+\end{enumerate}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Exercício de digitação 1}
+
+\begin{block}{Escreva isto em \LaTeX:
+\footnote{\url{http://pt.wikipedia.org/wiki/Brasil}}}
+Brasil, oficialmente ``República Federativa do Brasil''  é o maior país da
+América do Sul e da região da América latina. [...] O setor de serviços responde pela
+maior parte do PIB, com 66,8\%, seguido pelo setor industrial, com 29,7\%
+(estimativa para 2007), enquanto a agricultura representa 3,5\% (2008 est). A
+força de trabalho brasileira é estimada em R\$ 100,77 milhões, dos quais 10\%
+são ocupados na agricultura, 19\% no setor da indústria e 71\% no setor de
+serviços.
+
+\end{block}
+\vskip 2ex
+\begin{center}
+\fbox{\href{\wlnewdoc{basics-exercise-1.tex}}{%
+Click to open this exercise in \wllogo{}}}
+\end{center}
+
+\begin{itemize}
+\item Dica: perceba os caracteres que tem significado especial!
+\item Uma vez que tenha dado certo,
+\fbox{\href{\wlnewdoc{basics-exercise-1-solution.tex}}{%
+veja aqui minha solução}}.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Digitando Matemática}
+\begin{frame}[fragile]{\insertsubsection{}: Cifrão (\$)}
+\begin{itemize}
+\item Por que o cifrão  \keystrokebftt{\$} é um caracter especial? Porque
+o utilizamos para marcar textos matemáticos.\\[1ex]
+\begin{exampletwouptiny}
+% não tão bom:
+Seja a e b inteiros positivos 
+distintos, e seja  
+c = a - b + 1.
+
+% muito melhor:
+Seja $a$ e $b$ inteiros positivos 
+distintos, e seja
+$c = a - b + 1$.
+\end{exampletwouptiny}
+\item Sempre utilize cifrão em pares --- um para o começo do texto matemático e
+outro para o final.
+\item \LaTeX{} maneja o espaçamento automaticamente; ele ignora os seus espaços.
+\begin{exampletwouptiny}
+Seja $y=mx+b$  \ldots
+
+Seja $y = m x + b$  \ldots
+\end{exampletwouptiny}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{\insertsubsection{}: Notação}
+\begin{itemize}
+\item Use circunflexo \keystrokebftt{\^} para sobrescritos e
+\emph{underline} \keystrokebftt{\_} para índices.
+\begin{exampletwouptiny}
+$y = c_2 x^2 + c_1 x + c_0$
+\end{exampletwouptiny}
+\vskip 2ex
+
+\item Use chaves \keystrokebftt{\{} \keystrokebftt{\}} para agrupar
+sobrescritos e índices.
+\begin{exampletwouptiny}
+$F_n = F_n-1 + F_n-2$     % oops!
+
+$F_n = F_{n-1} + F_{n-2}$ % ok!
+\end{exampletwouptiny}
+\vskip 2ex
+
+\item Há também comandos para letras Gregas e para notações comuns.
+\begin{exampletwouptiny}
+$\mu = A e^{Q/RT}$
+
+$\Omega = \sum_{k=1}^{n} \omega_k$
+\end{exampletwouptiny}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{\insertsubsection{}: Equações centralizadas}
+\begin{itemize}
+\item Se algo for grande e amedrontador, \emph{exiba-o} em sua própria linha
+utilizando \cmdbegin{equation} e \cmdend{equation}.\\[2ex]
+\begin{exampletwouptiny}
+As raízes de uma equação quadrática
+são dadas por
+\begin{equation}
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}
+         {2a}
+\end{equation}
+em que $a$, $b$ e $c$ são \ldots
+\end{exampletwouptiny}
+\vskip 1em
+{\scriptsize Perigo: \LaTeX{} na maioria das vezes ignora espaços no ambiente
+matemático, porém não pode manejar linhas em branco em equações --- não pule
+linhas dentro de ambientes matemáticos.}
+\end{itemize}
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Interlúdio: Ambientes}
+\begin{itemize}
+\item \bftt{equation} é um \emph{ambiente} --- um contexto.
+\item Um comando pode produzir diferentes resultados em contextos diferentes.
+\begin{exampletwouptiny}
+Podemos escrever
+$ \Omega = \sum_{k=1}^{n} \omega_k $
+no texto, ou podemos escrever
+\begin{equation}
+  \Omega = \sum_{k=1}^{n} \omega_k
+\end{equation}
+para exibi-lo.
+\end{exampletwouptiny}
+\vskip 2ex
+\item Note que  $\Sigma$ é maior no ambiente \bftt{equation}, 
+e como sobrescritos e índices mudam de posição, embora você tenha utilizado
+os mesmos comandos
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Interlúdio: Ambientes}
+\begin{itemize}
+\item Os comandos \cmdbs{begin} e \cmdbs{end} são utilizados para criar
+diferentes ambientes.
+\vskip 2ex
+
+\item Os ambientes \bftt{itemize} e \bftt{enumerate} geram listas.
+\begin{exampletwouptiny}
+\begin{itemize} % for bullet points
+\item Bolachas
+\item Cafés
+\end{itemize}
+
+\begin{enumerate} % for numbers
+\item Bolachas
+\item Cafés
+\end{enumerate}
+\end{exampletwouptiny}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Interlúdio: Pacotes}
+
+\begin{itemize}
+\item Todos os comandos que utilizamos estão contidos nas distribuições de
+\LaTeX.
+
+\item \emph{Pacotes} são bibliotecas com comandos e ambientes extra. Há milhares
+de pacotes disponíveis.
+
+\item Devemos chamar cada pacote que queremos utilizar com um comando
+\cmdbs{usepackage} no \emph{preâmbulo}.
+
+\item Exemplo: \bftt{amsmath} da  American Mathematical Society.
+\begin{minted}[fontsize=\small,frame=single]{latex}
+\documentclass{article}
+\usepackage{amsmath} % preâmbulo
+\begin{document}
+% agora podemos usar os comandos do amsmath aqui
+\end{document}
+\end{minted}
+\end{itemize}
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{\insertsubsection{}: Exemplos com \bftt{amsmath}}
+\begin{itemize}
+\item Use \bftt{equation*} (``equation-asterisco'') para equações não numeradas.
+\begin{exampletwouptiny}
+\begin{equation*}
+  \Omega = \sum_{k=1}^{n} \omega_k
+\end{equation*}
+\end{exampletwouptiny}
+\item \LaTeX{} trata letras adjacentes como variáveis múltiplas multiplicadas, o
+que nem sempre é o que você deseja. 
+\bftt{amsmath} define vários operadores matemáticos comuns.
+\begin{exampletwouptiny}
+\begin{equation*} % ruim!
+ min_{x,y} (1-x)^2 + 100(y-x^2)^2 
+\end{equation*}
+\begin{equation*} % bom!
+\min_{x,y}{(1-x)^2 + 100(y-x^2)^2}
+\end{equation*}
+\end{exampletwouptiny}
+\item Pode-se utilizar  \cmdbs{operatorname} pra outros.
+\begin{exampletwouptiny}
+\begin{equation*}
+\beta_i =\operatorname{sen}(\alpha)
+\frac{\operatorname{Cov}(R_i, R_m)}
+     {\operatorname{Var}(R_m)}
+\end{equation*}
+\end{exampletwouptiny}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{\insertsubsection{}: Exemplos com \bftt{amsmath}}
+\begin{itemize}{\small
+\item Alinhe  uma sequência de equações com o símbolo de igualdade
+\begin{align*}
+(x+1)^3 &= (x+1)(x+1)(x+1) \\
+        &= (x+1)(x^2 + 2x + 1) \\
+        &= x^3 + 3x^2 + 3x + 1
+\end{align*}
+com o ambiente \bftt{align*}.
+
+% por alguma razão, isto não fica muito bem
+\begin{minted}[fontsize=\small,frame=single]{latex}
+\begin{align*}
+(x+1)^3 &= (x+1)(x+1)(x+1) \\
+        &= (x+1)(x^2 + 2x + 1) \\
+        &= x^3 + 3x^2 + 3x + 1
+\end{align*}
+\end{minted}
+\item O e comercial \keystrokebftt{\&} separa a coluna da esquerda (antes do
+$=$) da coluna da direta (após o $=$).
+\item As barras invertidas duplas
+\keystrokebftt{\bs}\keystrokebftt{\bs} iniciam uma nova linha.
+}\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]{Exercícios de escrita 2}
+
+\begin{block}{Typeset this in \LaTeX:}
+Sejam $X_1, X_2, \ldots, X_n$ uma sequência de variáveis aleatórias
+independentes e distribuídas de forma igual com $\operatorname{E}[X_i] = \mu$
+e $\operatorname{Var}[X_i] = \sigma^2 < \infty$, e denote
+\begin{equation*}
+S_n = \frac{1}{n}\sum_{i}^{n} X_i
+\end{equation*}
+suas médias. Então quando $n$ tende ao infinito, as variáveis aleatórias  
+$\sqrt{n}(S_n - \mu)$ convergem em distribuição à uma normal $N(0, \sigma^2)$.
+\end{block}
+\vskip 2ex
+\begin{center}
+\fbox{\href{\wlnewdoc{basics-exercise-2.tex}}{%
+Clique aqui para abrir o exercícios no \wllogo{}}}
+\end{center}
+\begin{itemize}
+\item Dica: use o comando \cmdbs{infty} para $\infty$.
+\item Uma vez que tenha tentado,
+\fbox{\href{\wlnewdoc{basics-exercise-2-solution.tex}}{%
+clique aqui e veja a solução}}.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Fim da Parte 1}
+\begin{itemize}
+\item Muito bem! Aprendemos como \ldots
+\begin{itemize}
+\item Escrever em  \LaTeX.
+\item Usar uma porção de comandos.
+\item Manejar erros quando eles aparecem.
+\item Digitar belos textos matemáticos.
+\item Usar vários ambientes diferentes.
+\item Chamar pacotes.
+\end{itemize}
+\item Na Parte 2, veremos como usar  \LaTeX{} para escrever documentos
+estruturados com seções, referências cruzadas, figuras, tabelas e bibliografias.
+Vejo vocês!
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+   \setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
+\usefonttheme{default}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+\usefonttheme[onlymath]{serif}
+ \setbeamercovered{transparent=10}
+  % or whatever (possibly just delete it)
+}
+  
+\usepackage[brazil,english]{babel}
+\usepackage[T1]{fontenc} 
+\usepackage{ae,aecompl}
+\usepackage[utf8]{inputenc}
+
+\title[Introdução ao \LaTeX]{Uma Introdução  ao \LaTeX\thanks{Adaptado de
+\href{https://docs.google.com/file/d/0B1WX73woAuwgR2hHTE9ybmk1WG8/edit}{``An
+interactive introduction to \LaTeX''} por John Lees-Miller.}}
+\subtitle{Parte I: O básico}
+\author{Luiz Rafael dos Santos}
+\institute{IFC-Camboriú}
+\date{\today}
+
+
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Uncomment these lines for an automatically generated outline.
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Introdução}
+
+\begin{frame}{Por que utilizar \LaTeX}
+
+\begin{itemize}
+  \item Gera  textos bonitos
+  \begin{itemize}
+  \item Especialmente textos matemáticos
+\end{itemize}
+  \item Foi criado por cientistas, para cientistas
+  \begin{itemize}
+  \item Uma grande comunidade que atualiza e faz novos pacotes
+\end{itemize}
+  \item É bem poderoso --- pode ser estendido
+  \begin{itemize}
+  \item Pacotes para artigos, apresentações, monografias, teses, planilhas, \ldots
+\end{itemize}
+\end{itemize}
+
+
+\begin{block}{Dificuldades}
+\begin{itemize}
+  \item Linguagem de marcação
+  \item Mudança de paradigma em relação a como se escreve um texto
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+
+\begin{frame}{Como funciona?}
+\begin{itemize}
+  \item Você escreve o documento em \texttt{texto puro} com
+  \textcolor{green}{\texttt{comandos}} que descrevem sua estrutura ou 
+  significado
+  \item O programa \texttt{latex} processa seu texto e os comandos para produzir
+  um documento esteticamente bem formatado.
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\section{Some \LaTeX{} Examples}
+
+\subsection{Tables and Figures}
+
+\begin{frame}{Tables and Figures}
+
+\begin{itemize}
+\item Use \texttt{tabular} for basic tables --- see Table~\ref{tab:widgets}, for example.
+\item You can upload a figure (JPEG, PNG or PDF) using the files menu. 
+\item To include it in your document, use the \texttt{includegraphics} command (see the comment below in the source code).
+\end{itemize}
+
+% Commands to include a figure:
+%\begin{figure}
+%\includegraphics[width=\textwidth]{your-figure's-file-name}
+%\caption{\label{fig:your-figure}Caption goes here.}
+%\end{figure}
+
+\begin{table}
+\centering
+\begin{tabular}{l|r}
+Item & Quantity \\\hline
+Widgets & 42 \\
+Gadgets & 13
+\end{tabular}
+\caption{\label{tab:widgets}An example table.}
+\end{table}
+
+\end{frame}
+
+\subsection{Mathematics}
+
+\begin{frame}{Readable Mathematics}
+
+Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically
+distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] =
+\sigma^2 < \infty$, and let $$S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
+      = \frac{1}{n}\sum_{i}^{n} X_i$$
+denote their mean. Then as $n$ approaches infinity, the random variables
+$\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0,
+\sigma^2)$.
+
+\end{frame}
+
+\end{document}
