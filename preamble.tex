@@ -9,7 +9,9 @@
 \usepackage{amsmath}
 \usepackage{color}
 \usepackage{minted}
+\synctex=1
 
+% \usepackage[outputdir="tmp"]{minted}
 \makeatletter
 \newcommand{\minted@write@detok}[1]{%
   \immediate\write\FV@OutFile{\detokenize{#1}}}%
@@ -92,45 +94,45 @@
 % stolen from minted.dtx
 \newenvironment{exampletwoup}
   {\VerbatimEnvironment
-   \begin{VerbatimOut}{example.out}}
+   \begin{VerbatimOut}{tmp/example.out}}
   {\end{VerbatimOut}
    \setlength{\parindent}{0pt}
    \fbox{\begin{tabular}{l|l}
    \begin{minipage}{0.55\linewidth}
-     \inputminted[fontsize=\small,resetmargins]{latex}{example.out}
+     \inputminted[fontsize=\small,resetmargins]{latex}{tmp/example.out}
    \end{minipage} &
    \begin{minipage}{0.35\linewidth}
-     \input{example.out}
+     \input{tmp/example.out}
    \end{minipage}
    \end{tabular}}}
 
 \newenvironment{exampletwouptiny}
   {\VerbatimEnvironment
-   \begin{VerbatimOut}{example.out}}
+   \begin{VerbatimOut}{tmp/example.out}}
   {\end{VerbatimOut}
    \setlength{\parindent}{0pt}
    \fbox{\begin{tabular}{l|l}
    \begin{minipage}{0.55\linewidth}
-     \inputminted[fontsize=\scriptsize,resetmargins]{latex}{example.out}
+     \inputminted[fontsize=\scriptsize,resetmargins]{latex}{tmp/example.out}
    \end{minipage} &
    \begin{minipage}{0.35\linewidth}
      \setlength{\parskip}{6pt plus 1pt minus 1pt}%
-     \raggedright\scriptsize\input{example.out}
+     \raggedright\scriptsize\input{tmp/example.out}
    \end{minipage}
    \end{tabular}}}
 
 \newenvironment{exampletwouptinynoframe}
   {\VerbatimEnvironment
-   \begin{VerbatimOut}{example.out}}
+   \begin{VerbatimOut}{tmp/example.out}}
   {\end{VerbatimOut}
    \setlength{\parindent}{0pt}
-   \begin{tabular}{l|l}
+   \begin{tabular}{l|l} 
    \begin{minipage}{0.55\linewidth}
-     \inputminted[fontsize=\scriptsize,resetmargins]{latex}{example.out}
+     \inputminted[fontsize=\scriptsize,resetmargins]{latex}{tmp/example.out}
    \end{minipage} &
    \begin{minipage}{0.35\linewidth}
      \setlength{\parskip}{6pt plus 1pt minus 1pt}%
-     \raggedright\scriptsize\input{example.out}
+     \raggedright\scriptsize\input{tmp/example.out}
    \end{minipage}
    \end{tabular}}
 
